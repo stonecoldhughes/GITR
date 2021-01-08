@@ -8,6 +8,29 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMake/)
 set(CMAKE_CXX_STANDARD 17) # Doesn't set NVCC C++ standard
 set(CXX_STANDARD_REQUIRED TRUE)
 
+# Captain! New code
+include( download_goodies.cmake )
+
+# obtain libconfig
+set( libconfig_target "libconfig" )
+
+download_goodies( target_name "${libconfig_target}"
+                  prefix "/libconfig"
+                  git_repository "git@github.com:hyperrealm/libconfig.git"
+                  configure_command ""
+                  install_command "" )
+
+# Captain! You need to do a few things: first, in the dockerfile setup your git remotes
+# So you don't have to keep doing it here every time. Next, do the install for the rest of
+# The gitr dependencies
+
+# Now can you get install properties? If so have it not trash up the environment...
+# Can that name be lowercase?
+ExternalProject_Get_Property( "${libconfig_target}" GIT_REPOSITORY )
+message( STATUS "Ahoy, Captain! git repo: ${GIT_REPOSITORY}" )
+
+# Captain! End new code
+
 # Set source files
 file(GLOB SRC_FILES src/*.cpp)
 file(GLOB TEST_FILES src/*.cpp test/tests_general.cpp)
