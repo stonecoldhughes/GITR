@@ -11,14 +11,26 @@ set(CXX_STANDARD_REQUIRED TRUE)
 # Captain! New code
 include( download_goodies.cmake )
 
-# obtain libconfig
+# obtain libconfig - leave off the CMake args command. Explicitly specify no install step
 set( libconfig_target "libconfig" )
 
 download_goodies( target_name "${libconfig_target}"
                   prefix "/libconfig"
                   git_repository "git@github.com:hyperrealm/libconfig.git"
-                  configure_command ""
+                  configure_command "" )
+                  # install_command "" ) Add back when you can inspect directory structure.
+
+# Next get the properties out of the target for linking down below
+
+# obtain netcdf-c
+set( netcdf-c_target "netcdf-c_target" )
+download_goodies( target_name "${netcdf-c_target}" 
+                  prefix "/netcdf-c"
+                  git_repository "git@github.com:Unidata/netcdf-c.git"
+                  cmake_args "-DENABLE_DAP=OFF"
                   install_command "" )
+
+# leave out the configure command in favor of the cmake_args one
 
 # Captain! You need to do a few things: first, in the dockerfile setup your git remotes
 # So you don't have to keep doing it here every time. Next, do the install for the rest of

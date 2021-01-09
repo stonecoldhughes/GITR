@@ -1,26 +1,24 @@
-# Could I include this in a function?
+# What happens if we put this in the function?
 include( ExternalProject )
 
-# function to download external data give it 1 argument?
-# does it even need an external target? It could probably just link one in right
-# You're going to replace all the function names - also do some checks on ARGVN?
+# Add checks for ARGVN?
 function( download_goodies )
 
-# No bool or multivalue arguments, only single values. Currently you can parse others.
-# If this external project creates a new target, can you access it? looks like it
-cmake_parse_arguments( libconfig 
+# See if you can use the alternative syntax specifically for functions...
+cmake_parse_arguments( tmp 
                        ""
                        "target_name;prefix;git_repository;configure_command;install_command"
-                       "" 
+                       "cmake_args" 
                        ${ARGN} )
 
-# The options below can be extracted as properties.
-ExternalProject_Add( ${libconfig_target_name} 
+# All of the options below can be extracted as properties.
+ExternalProject_Add( ${tmp_target_name} 
 
-  PREFIX ${libconfig_prefix}
-  GIT_REPOSITORY ${libconfig_git_repository}
-  CONFIGURE_COMMAND ${libconfig_configure_command}
-  INSTALL_COMMAND ${libconfig_install_command}
+  PREFIX ${tmp_prefix}
+  GIT_REPOSITORY ${tmp_git_repository}
+  CONFIGURE_COMMAND ${tmp_configure_command}
+  CMAKE_ARGS ${tmp_cmake_args}
+  INSTALL_COMMAND ${tmp_install_command}
 )
 
 endfunction()
