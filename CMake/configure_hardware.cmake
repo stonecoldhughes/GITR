@@ -1,0 +1,11 @@
+if( USE_CUDA )
+  add_compile_definitions( THRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_CUDA )
+  set(CUDA_HOST_COMPILER ${CMAKE_CXX_COMPILER})
+  # This should be an option for the command line - this will only work for fusiont5
+  set(CMAKE_CUDA_COMPILER /home/dg6/spack/opt/spack/linux-ubuntu18.04-x86_64/gcc-7.3.0/cuda-10.0.130-s6ervywpchxmerrju62il7xkeeamlfcv/bin/nvcc)
+  set(CUDA_SEPARABLE_COMPILATION TRUE)
+  include( FindCUDAToolkit REQUIRED )
+  enable_language( CUDA )
+else()
+  add_compile_definitions( THRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_CPP )
+endif()

@@ -9,6 +9,11 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/CMake/)
 set(CMAKE_CXX_STANDARD 17) # Doesn't set NVCC C++ standard
 set(CXX_STANDARD_REQUIRED TRUE)
 
+# Captain! New change. Goal here is a live demo at tomorrow's meeting.
+# set any special library locations up here
+include( CMake/configure_hardware.cmake )
+include( CMake/dependencies.cmake )
+
 # Set source files
 file(GLOB SRC_FILES src/*.cpp)
 file(GLOB TEST_FILES src/*.cpp test/tests_general.cpp)
