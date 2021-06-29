@@ -1,4 +1,4 @@
-# GITR
+# GITR 
 Global Impurity Transport Code
 
 ### Note for legacy GITR users:
