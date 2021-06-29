@@ -1,6 +1,8 @@
 # GITR 
 Global Impurity Transport Code
 
+[![Build GITR](https://github.com/ORNL-Fusion/GITR/actions/workflows/cmake.yml/badge.svg)](https://github.com/ORNL-Fusion/GITR/actions/workflows/cmake.yml)
+
 ### Note for legacy GITR users:
 For reference, please visit the archived copy of the GITR project - [GITR_legacy](https://github.com/ORNL-Fusion/GITR_legacy)
 
