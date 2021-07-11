@@ -11,6 +11,8 @@ include( CMake/cuda.cmake ) # ---> creates target CUDA::cudart
 # HDF5
 include( CMake/hdf5.cmake )
 
+list( APPEND dependencies hdf5 )
+
 # MPI
 
 include( CMake/mpi.cmake ) # ---> creates target mpi

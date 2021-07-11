@@ -1,4 +1,5 @@
 # Add the netcdf library
+# Captain! Clean all this up with the "PREFIX" argument to ExternalProject
 
 find_package(NetCDF COMPONENTS CXX)
 
@@ -60,6 +61,7 @@ if( TARGET netcdf-c_download AND TARGET netcdf-cxx4_download )
   add_dependencies( netcdf netcdf_c_download netcdf-cxx4_download )
 endif()
 
+# Captain! These are global. Can you make them not?
 include_directories( ${NETCDF_CXX_INCLUDE_DIR} )
 
 include_directories( ${NETCDF_INCLUDE_DIR} )
@@ -69,4 +71,4 @@ target_include_directories( netcdf INTERFACE
                             ${NETCDF_CXX_INCLUDE_DIR}
                             ${HDF5_INCLUDE_DIRS} )
 
-target_link_libraries( netcdf INTERFACE ${NETCDF_LIBRARY} ${NETCDF_CXX_LIBRARY} HDF5::HDF5 )
+target_link_libraries( netcdf INTERFACE ${NETCDF_LIBRARY} ${NETCDF_CXX_LIBRARY} hdf5 )
