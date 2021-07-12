@@ -6,7 +6,7 @@ if( NOT GITR_USE_CUDA )
 
   ExternalProject_Add( thrust_download
                        PREFIX "${prefix}/thrust" 
-                       GIT_REPOSITORY "https://github.com/NVIDIA/thrust.git"
+                       GIT_REPOSITORY ${thrust_url}
                        CONFIGURE_COMMAND ""
                        BUILD_COMMAND ""
                        INSTALL_COMMAND "" )

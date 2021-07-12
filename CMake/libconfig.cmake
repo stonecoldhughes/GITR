@@ -6,8 +6,6 @@ if( NOT LIBCONFIG_FOUND )
 
   message( "Downloading libconfig..." )
 
-  set( libconfig_url "https://github.com/hyperrealm/libconfig.git" )
-
   if( EXISTS ${prefix}/libconfig )
     ExternalProject_Add( libconfig_download
                          DOWNLOAD_COMMAND ""

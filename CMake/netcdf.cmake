@@ -6,8 +6,6 @@ if( NOT NETCDF_FOUND )
 
   message( "Downloading netcdf-c and netcdf-cxx4..." )
 
-  set( netcdf-c-url "https://github.com/Unidata/netcdf-c.git" )
-
   if( EXISTS ${prefix}/netcdf-c )
     ExternalProject_Add( netcdf-c_download
                          DOWNLOAD_COMMAND ""
@@ -23,7 +21,6 @@ if( NOT NETCDF_FOUND )
 
   endif()
 
-  set( netcdf-cxx4-url "https://github.com/Unidata/netcdf-cxx4.git" )
   if( EXISTS ${prefix}/netcdf-cxx4 )
     # No need to install this one
     ExternalProject_Add( netcdf-cxx4_download
@@ -60,6 +57,7 @@ if( TARGET netcdf-c_download AND TARGET netcdf-cxx4_download )
   add_dependencies( netcdf netcdf_c_download netcdf-cxx4_download )
 endif()
 
+# Captain! Are these next 2 lines necessary? This is a global include... I think not
 include_directories( ${NETCDF_CXX_INCLUDE_DIR} )
 
 include_directories( ${NETCDF_INCLUDE_DIR} )

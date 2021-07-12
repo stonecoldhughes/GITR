@@ -1,5 +1,9 @@
 # Handle external dependencies
 
+set( dependencies "" )
+
+include( CMake/dependency_urls.cmake )
+
 include( ExternalProject )
 
 set( prefix "${CMAKE_BINARY_DIR}/external" )
@@ -10,12 +14,11 @@ include( CMake/cuda.cmake ) # ---> creates target CUDA::cudart
 
 # HDF5
 include( CMake/hdf5.cmake )
+list( APPEND dependencies HDF5::HDF5 )
 
 # MPI
 
 include( CMake/mpi.cmake ) # ---> creates target mpi
-
-set( dependencies "" )
 
 # Thrust
 
