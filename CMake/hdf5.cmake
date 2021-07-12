@@ -1,3 +1,4 @@
+# for now, always download and build hdf5 automatically
 # add hdf5 if not found
 set( hdf5_archive_url
     "https://github.com/ORNL-Fusion/hdf5_archive/blob/main/CMake-hdf5-1.12.1.tar.gz?raw=true" )
@@ -16,7 +17,6 @@ add_custom_target( hdf5_build )
 add_custom_command( TARGET hdf5_build
                     PRE_BUILD COMMAND bash build-unix.sh 
                     WORKING_DIRECTORY ${prefix}/CMake-hdf5-1.12.1 )
-
 
 add_library( hdf5 INTERFACE )
 
